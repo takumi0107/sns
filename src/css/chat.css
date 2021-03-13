@@ -1,0 +1,19 @@
+.container {
+    width: 100%;
+    text-align: center;
+}
+.bar {
+    border-bottom: 1px solid black;
+    padding-top: 20px;
+}
+.back {
+    position: absolute;
+    left: 50px;
+    top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.barTitle {
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}

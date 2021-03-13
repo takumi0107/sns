@@ -1,0 +1,35 @@
+.container {
+    background: white;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+.titleContainer {
+    padding-top: 3%;
+    padding-bottom: 1cm;
+}
+
+.title { 
+    color: rgb(18, 170, 216);
+    font-size: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.inputContainer {
+    padding-bottom: 50px;
+}
+.passContainer {
+    padding-bottom: 50px;
+}
+.input{
+    background-color: beige;
+}
+.moveButtonContainer {
+    padding-right: 50px;
+    padding-top: 10px;
+}
+.moveButton {
+    color: rgb(80, 80, 212);
+}
+.submitButton {
+    background-color: aquamarine;
+}
