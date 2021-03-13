@@ -13,6 +13,18 @@ export default function Chat() {
             <text className="back">← Friends</text>
             </Link>
             </div>
+            <div className="chatBox">
+             <div className="friendsMessage">
+                 <text>hello</text>
+             </div>
+             <div className="myMessage">
+                 <text>woo</text>
+             </div>
+             <div className="sendContainer">
+                <input className="input"/>
+                <button className="send">Send</button>
+             </div>
+            </div>
         </div>
     )
 }
