@@ -1,20 +1,22 @@
 import React from 'react';
 import '../css/home.css';
-import { Link } from 'react-router-dom';
+import history from '../history';
+import firebase from 'firebase';
 
 export default function Home() {
+    function handlePress() {
+        firebase.auth().signOut()
+        .then(() => history.push('/'))
+        .catch((error) => console.log(error))
+    }
     return(
         <div className="container">
             <div className="bar">
-            <Link to="/">
-            <text className="back">Log Out</text>
-            </Link>
+            <text className="back" onClick={handlePress}>Log Out</text>
             <text className="barTitle">
                 Home
             </text>
-           <Link to="friends">
-            <text className="friends">Friends</text>
-            </Link>
+            <text className="friends" onClick={() => history.push('/friends')}>Friends</text>
             </div>
             <div className="postingArea">
                 <div className="nameContainer">
@@ -23,6 +25,9 @@ export default function Home() {
                 <div className="contentContainer">
                 <text className="content">content</text>
                 </div>
+            </div>
+            <div className="buttonContainer">
+                <button className="button" onClick={() => history.push('/create')}>+</button>
             </div>
         </div>
     )

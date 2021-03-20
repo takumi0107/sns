@@ -1,64 +1,43 @@
 import React from 'react';
 import '../css/friends.css';
-import { Link } from 'react-router-dom';
+import history from '../history'
 
 export default function Friends() {
     return(
         <div className="container">
             <div className="bar">
-             <Link to="home">
-                 <text className="back">← Home</text>
-             </Link>
+                 <text className="back" onClick={() => history.push('/home')}>← Home</text>
             <text className="barTitle">
                 Friends
             </text>
             </div>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            <Link to="chat">
             <div className="list">
             <text className="friend">go</text>
             </div>
-            </Link>
-            
         </div>
     )
 }

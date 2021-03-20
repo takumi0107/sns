@@ -32,14 +32,18 @@
     overflow: scroll;
 }
 .friendsMessage {
+    padding-left: 10px;
     text-align: start;
     margin-right: 60%;
-    background-color: aquamarine;
+    background-color: lightgrey;
+    border-radius: 40px;
 }
 .myMessage {
+    padding-right: 10px;
     text-align: end;
     margin-left: 60%;
     background-color: bisque;
+    border-radius: 40px;
 }
 .sendContainer {
     position: absolute;

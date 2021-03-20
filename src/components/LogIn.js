@@ -1,27 +1,48 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../css/LogIn.css'
+import React, {useState, useEffect} from 'react';
+import '../css/LogIn.css';
+import history from '../history';
+import firebase from 'firebase'
 
 export default function PageOne() {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+
+  useEffect(() => {
+    const unsubscribe =firebase.auth().onAuthStateChanged((user) => {
+      if(user) {history.replace('/home')}
+    })
+    return unsubscribe
+  }, [])
+  function handlePress() {
+    firebase.auth().signInWithEmailAndPassword(email, pass)
+    .then(() => history.replace('/home'))
+    .catch((error) => console.log(error))
+  }
     return (
-      <div className="container">
+      <div className="first_container">
         <div className="titleContainer">
         <text className="title">LogIn</text>
         </div>
         <div className="emailContainer">
-            <input className="input" placeholder="Please input EmailAddress"/>
+            <input 
+            className="input" 
+            placeholder="Email Address"
+            defaultValue={email}
+            onChange={e => setEmail(e.target.value)} 
+            />
         </div>
         <div className="passContainer">
-            <input className="input" placeholder="Please input password" />
+            <input 
+            className="input" 
+            placeholder="Password" 
+            defaultValue={pass}
+            onChange={e => setPass(e.target.value)}
+            />
         </div>
-        <Link to="/pageTwo" className="moveButtonContainer">
-          <text className="moveButton">
+          <text className="moveButton" onClick={() => history.push('/SignUp')}>
             SignUp here !
           </text>
-        </Link>
-        <Link to="/home">
-        <button className="submitButton">Submit!</button>
-        </Link>
+        <button className="submitButton" onClick={handlePress}>Submit!</button>
       </div>
     );  
   };
