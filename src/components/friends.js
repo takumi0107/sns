@@ -12,7 +12,7 @@ export default function Friends() {
             </text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>go</text>
             </div>
             <div className="list">
             <text className="friend">go</text>
