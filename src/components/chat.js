@@ -2,14 +2,16 @@ import React, {useState, useEffect} from 'react';
 import '../css/chat.css';
 import history from '../history';
 import firebase from 'firebase';
+import {useLocation} from 'react-router-dom';
 
 export default function Chat() {
+    const location = useLocation();
     const [message, setMessage] = useState('')
     const [view, setView] = useState([])
     useEffect(() => {
         const db = firebase.firestore();
         const {currentUser} = firebase.auth();
-        const ref = db.collection(`users/${currentUser?.uid}/messages`).orderBy('time', 'asc');
+        const ref = db.collection(`sentBy/${currentUser?.uid}/to/${location.state.userId}/messages`).orderBy('time', 'asc');
         const unsubscribe = ref.onSnapshot((snapshot) => {
             const messageArray = []
             snapshot.forEach((doc) => {
@@ -22,12 +24,13 @@ export default function Chat() {
             setView(messageArray)
         })
         return unsubscribe
-    }, [])
+    }, [location.state.userId])
+
 
     function handlePress() {
         const {currentUser} = firebase.auth();
         const db = firebase.firestore();
-        const ref = db.collection(`users/${currentUser?.uid}/messages`);
+        const ref = db.collection(`sentBy/${currentUser?.uid}/to/${location.state.userId}/messages`);
         ref.add({
             message,
             time: new Date(),
