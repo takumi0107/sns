@@ -8,6 +8,7 @@ export default function Chat() {
     const location = useLocation();
     const [message, setMessage] = useState('')
     const [view, setView] = useState([])
+    const [receive, setReceive] = useState([])
     useEffect(() => {
         const db = firebase.firestore();
         const {currentUser} = firebase.auth();
@@ -22,6 +23,24 @@ export default function Chat() {
                 })
             })
             setView(messageArray)
+        })
+        return unsubscribe
+    }, [location.state.userId])
+
+    useEffect(() => {
+        const db = firebase.firestore();
+        const {currentUser} = firebase.auth();
+        const ref = db.collection(`sentBy/${location.state.userId}/to/${currentUser?.uid}/messages`).orderBy('time', 'asc');
+        const unsubscribe = ref.onSnapshot((snapshot) => {
+            const receiveArray = []
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                receiveArray.push({
+                    message: data.message,
+                    time: data.time,
+                })
+            })
+            setReceive(receiveArray)
         })
         return unsubscribe
     }, [location.state.userId])
@@ -47,9 +66,12 @@ export default function Chat() {
             <text className="back" onClick={() => history.push('/friends')}>← Friends</text>
             </div>
             <div className="chatBox">
-             <div className="friendsMessage">
-                 <text>hello</text>
-             </div>
+             {receive.map(info =>
+                    <div className="friendsMessage">
+                        <text>{info.message}</text>
+                    </div>
+                )}   
+
              {view.map(home => 
                     <div className="myMessage">
                         <text>{home.message}</text>
