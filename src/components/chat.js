@@ -9,7 +9,7 @@ export default function Chat() {
     useEffect(() => {
         const db = firebase.firestore();
         const {currentUser} = firebase.auth();
-        const ref = db.collection(`users/${currentUser?.uid}/messages`)
+        const ref = db.collection(`users/${currentUser?.uid}/messages`).orderBy('time', 'asc');
         const unsubscribe = ref.onSnapshot((snapshot) => {
             const messageArray = []
             snapshot.forEach((doc) => {
@@ -22,7 +22,7 @@ export default function Chat() {
             setView(messageArray)
         })
         return unsubscribe
-    })
+    }, [])
 
     function handlePress() {
         const {currentUser} = firebase.auth();
@@ -32,7 +32,7 @@ export default function Chat() {
             message,
             time: new Date(),
         })
-         .then(() => history.push('/friends'))
+         .then()
          .catch((error) => console.log(error));
     }
     return(

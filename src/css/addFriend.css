@@ -1,0 +1,34 @@
+.addContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.Area {
+}
+.titleContent {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 500px;
+    font-size: 30px;
+    justify-content: center;
+    text-align: center;
+}
+.yesContainer {
+    padding-top: 50px;
+}
+.yes {
+    color: black;
+    font-size: 50px;
+}
+.noContainer {
+    padding-top: 50px;
+    padding-left: 50px;
+}
+.no {
+    color:black;
+    font-size: 50px;
+}
+

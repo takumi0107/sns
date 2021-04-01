@@ -1,17 +1,37 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../css/create.css';
 import history from '../history'
 import firebase from 'firebase'
 
 export default function Create() {
     const [content, setContent] = useState('')
-    function handlePress() {
-        const {currentUser} = firebase.auth();
+    const [name, setName] = useState('')
+
+    useEffect(() => {
         const db = firebase.firestore();
-        const ref = db.collection(`users/${currentUser?.uid}/posts`);
+        const {currentUser} = firebase.auth();
+        const nameRef = db.collection(`users/${currentUser?.uid}/userName`)   
+        const unsubscribe = nameRef.onSnapshot((snapshot) => {
+            const nameArray = []
+            snapshot.forEach((doc) => {
+               const data = doc.data()
+               const name = data.userName
+               nameArray.push(name)
+            })
+            setName(nameArray)
+        })
+        return unsubscribe
+    }, [])
+
+    function handlePress() {
+        const db = firebase.firestore();
+        const {currentUser} = firebase.auth();
+        const ref = db.collection(`posts`);
         ref.add({
             body: content,
             time: new Date(),
+            name: name[0],
+            userId: currentUser.uid
         })
          .then(() => history.push('/home'))
          .catch((error) => console.log(error));

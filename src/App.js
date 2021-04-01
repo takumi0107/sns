@@ -6,9 +6,11 @@ import Home from './components/home';
 import Friends from './components/friends';
 import Chat from './components/chat';
 import Create from './components/create';
+import Add from './components/addFriend';
 import {firebaseConfig} from './env';
 import firebase from 'firebase'
 import history from './history';
+
 
 require ('firebase/firestore')
 
@@ -29,6 +31,7 @@ export default function App() {
           <Route path="/friends" component={Friends} />
           <Route path="/chat" component={Chat} />
           <Route path="/create" component={Create} />
+          <Route path="/add" component={Add} />
         </div>
       </Router>
     </div>

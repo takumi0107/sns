@@ -12,31 +12,28 @@ export default function Friends() {
             </text>
             </div>
             <div className="list">
-            <text className="friend" onClick={() => history.push('/chat')}>go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>pop smoke</text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>j cole</text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>lil baby</text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>lil mosey</text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>jarvis</text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>future</text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>joey badass</text>
             </div>
             <div className="list">
-            <text className="friend">go</text>
-            </div>
-            <div className="list">
-            <text className="friend">go</text>
+            <text className="friend" onClick={() => history.push('/chat')}>juice world</text>
             </div>
         </div>
     )
